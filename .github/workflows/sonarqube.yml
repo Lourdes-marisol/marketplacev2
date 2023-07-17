@@ -1,0 +1,21 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sonarqube:
+    name: SonarQube Scanner
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v1
+      with:
+        projectBaseDir: ./
+        sonarCloud: 'true'
